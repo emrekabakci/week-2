@@ -2,22 +2,23 @@ import java.util.Scanner;
 
 public class Main {
 
-    static void pressEnterToContinue()
-    {
+    static void pressEnterToContinue() {
         System.out.println("Press Enter key to continue...");
-        try
-        {
+        try {
             System.in.read();
+        } catch (Exception e) {
         }
-        catch(Exception e)
-        {}
     }
 
-    static void plus() {
+    static void plus() throws Exception {
         Scanner scan = new Scanner(System.in);
         System.out.print("How many numbers will you enter? :");
         int counter = scan.nextInt();
         int number, result = 0;
+
+        if (counter <= 1) {
+            throw new Exception("Number have to greater than 1");
+        }
 
         for (int i = 1; i <= counter; i++) {
             System.out.print(i + ". number :");
@@ -30,11 +31,15 @@ public class Main {
         pressEnterToContinue();
     }
 
-    static void minus() {
+    static void minus() throws Exception {
         Scanner scan = new Scanner(System.in);
         System.out.print("How many numbers will you enter? :");
         int counter = scan.nextInt();
         int number, result = 0;
+
+        if (counter <= 1) {
+            throw new Exception("Number have to greater than 0");
+        }
 
         for (int i = 1; i <= counter; i++) {
             System.out.print(i + ". number :");
@@ -52,40 +57,32 @@ public class Main {
 
     static void times() {
         Scanner scan = new Scanner(System.in);
-        int number, result = 1, i = 1;
 
-        while (true) {
-            System.out.print(i++ + ". number :");
-            number = scan.nextInt();
+        System.out.println("Enter first number: ");
+        int number1 = scan.nextInt();
+        System.out.println("Enter second number: ");
+        int number2 = scan.nextInt();
 
-            if (number == 1)
-                break;
-
-            if (number == 0) {
-                result = 0;
-                break;
-            }
-            result *= number;
-        }
+        int result = number1 * number2;
 
         System.out.println("Result : " + result);
 
         pressEnterToContinue();
     }
 
-    static void divided() {
+    static void divided() throws Exception {
         Scanner scan = new Scanner(System.in);
         System.out.print("How many numbers will you enter? :");
         int counter = scan.nextInt();
         double number, result = 0.0;
 
+        if (counter <= 0) {
+            throw new Exception("Number have to greater than 1");
+        }
+
         for (int i = 1; i <= counter; i++) {
             System.out.print(i + ". number :");
             number = scan.nextDouble();
-            if (i != 1 && number == 0) {
-                System.out.println("You can't enter divisor as 0.");
-                continue;
-            }
             if (i == 1) {
                 result = number;
                 continue;
@@ -130,7 +127,7 @@ public class Main {
         pressEnterToContinue();
     }
 
-    static void mode(){
+    static void mode() {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter First Number :");
@@ -146,7 +143,7 @@ public class Main {
         pressEnterToContinue();
     }
 
-    static void rectangleArea(){
+    static void rectangleArea() {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter the short side of the rectangle :");
@@ -167,7 +164,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         int select;
         String menu = """
