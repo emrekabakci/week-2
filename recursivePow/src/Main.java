@@ -22,5 +22,6 @@ public class Main {
 
         //Result printed.
         System.out.println(pow(base,exponent));
+
     }
 }
